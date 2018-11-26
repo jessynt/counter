@@ -81,9 +81,6 @@ func run(c *cli.Context) error {
 
 		engine = gin.New()
 		engine.Use(gin.Recovery())
-		engine.Use(func(context *gin.Context) {
-			context.Next()
-		})
 		v1 := engine.Group("v1")
 		handlers.BindCounterHandler(v1, "redis", redisCounter)
 	}
