@@ -27,18 +27,6 @@ func main() {
 			Action:  run,
 			Flags: []cli.Flag{
 				cli.StringFlag{
-					Name:   "host",
-					Usage:  "host",
-					Value:  "0.0.0.0",
-					EnvVar: "COUNTER_HOST",
-				},
-				cli.IntFlag{
-					Name:   "port",
-					Usage:  "port",
-					Value:  8080,
-					EnvVar: "COUNTER_PORT",
-				},
-				cli.StringFlag{
 					Name:   "redis-host",
 					Usage:  "redis host",
 					Value:  "127.0.0.1",
@@ -100,5 +88,5 @@ func run(c *cli.Context) error {
 		handlers.BindCounterHandler(v1, "redis", redisCounter)
 	}
 
-	return engine.Run(fmt.Sprintf("%s:%d", c.String("host"), c.Int("port")))
+	return engine.Run("0.0.0.0:8080")
 }
