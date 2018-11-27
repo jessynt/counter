@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ template "counter.fullname" . }}-config
+data:
+  COUNTER_REDIS_HOST: redis-service
+  COUNTER_DEBUG: "true"

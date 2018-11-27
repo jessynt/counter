@@ -1,0 +1,7 @@
+name: counter
+engine: gotpl
+version: 0.0.1
+appVersion: 0.0.1
+maintainers:
+- email: jessynt@protonmail.com
+  name: jessynt

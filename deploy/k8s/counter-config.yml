@@ -1,6 +1,0 @@
-apiVersion: v1
-data:
-  COUNTER_REDIS_HOST: redis-service
-kind: ConfigMap
-metadata:
-  name: counter-config

@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ template "counter.fullname" . }}-deployment
+  labels:
+{{ include "labels.standard" . | indent 4 }}
+spec:
+  selector:
+    matchLabels:
+      app: {{ template "counter.name" . }}
+      release: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+  {{ include "labels.standard" . | indent 8 }}
+    spec:
+      containers:
+      - name: {{ .Chart.Name }}
+        image: "{{ .Values.images.repository }}:{{ .Values.images.tag }}"
+        imagePullPolicy: {{ .Values.images.pullPolicy }}
+        ports:
+        - containerPort: 8080
+        envFrom:
+        - configMapRef:
+            name: {{ include "counter.fullname" . }}-config
